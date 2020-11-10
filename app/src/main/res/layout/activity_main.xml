@@ -4,4 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    android:background="#FAFAFA"
+    tools:context=".MainActivity" >
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="287dp"
+        android:layout_height="72dp"
+        android:autoSizeTextType="uniform"
+        android:text="블루투스 연결"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="172dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="287dp"
+        android:layout_height="72dp"
+        android:autoSizeTextType="uniform"
+        android:text="온도/습도"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="329dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="287dp"
+        android:layout_height="72dp"
+        android:autoSizeTextType="uniform"
+        android:text="토양수분"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="499dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
