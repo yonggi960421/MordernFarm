@@ -3,4 +3,5 @@
     <item name="tvReceiveData" type="id"/>
     <item name="tvSendData" type="id"/>
     <item name="btnSendData" type="id"/>
+    <item name="btnSend" type="id"/>
 </resources>
