@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tvReceiveData" type="id"/>
+    <item name="tvSendData" type="id"/>
+    <item name="btnSendData" type="id"/>
+</resources>
