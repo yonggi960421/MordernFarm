@@ -1,29 +1,27 @@
 package com.example.mordernfarm;
 
-
-
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import app.akexorcist.bluetotohspp.library.BluetoothSPP;
 import app.akexorcist.bluetotohspp.library.BluetoothState;
 import app.akexorcist.bluetotohspp.library.DeviceList;
 
 
-
 public class bluetooth extends AppCompatActivity {
+
     private BluetoothSPP bt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_bluetooth);
         bt = new BluetoothSPP(this); //Initializing
 
         if (!bt.isBluetoothAvailable()) { //블루투스 사용 불가
@@ -88,6 +86,7 @@ public class bluetooth extends AppCompatActivity {
             }
         }
     }
+
     public void setup() {
         Button btnSend = findViewById(R.id.btnSend); //데이터 전송
         btnSend.setOnClickListener(new View.OnClickListener() {
@@ -97,5 +96,23 @@ public class bluetooth extends AppCompatActivity {
         });
     }
 
-}
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == BluetoothState.REQUEST_CONNECT_DEVICE) {
+            if (resultCode == Activity.RESULT_OK)
+                bt.connect(data);
+        } else if (requestCode == BluetoothState.REQUEST_ENABLE_BT) {
+            if (resultCode == Activity.RESULT_OK) {
+                bt.setupService();
+                bt.startService(BluetoothState.DEVICE_OTHER);
+                setup();
+            } else {
+                Toast.makeText(getApplicationContext()
+                        , "Bluetooth was not enabled."
+                        , Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
 
+
+    }
+}
